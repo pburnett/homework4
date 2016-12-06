@@ -25,7 +25,7 @@
 
       <c:forEach var="user" items="${users}">
         <tr>
-          <td>${user.firstName} ${user.lastName}</td>
+          <td><c:out value="${user.firstName}"/> ${user.lastName}</td>
           <td>${user.email}</td>
           <td>${user.bookTitle}</td>
           <td>Due Date to fix</td>

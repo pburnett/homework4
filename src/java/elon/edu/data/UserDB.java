@@ -30,6 +30,27 @@ public class UserDB {
         }
     }
 
+    public static int delete(User user) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+
+        String query = "DELETE FROM User "
+                + "WHERE Email = ?"
+                + "WHERE BookTitle = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getBookTitle());
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } finally {
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
     
     public static ArrayList<User> selectUsers() {
         ConnectionPool pool = ConnectionPool.getInstance();

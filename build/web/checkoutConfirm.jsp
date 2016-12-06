@@ -11,7 +11,7 @@
 
 <div id="redBorder">
   <div id="mainContent">
-    <p>Thank you for your patronage of the Belk Library. You've successfully checked out the book,${user.bookTitle}. Please note that this book is due back on . A friendly email reminder will be sent to you if your book becomes overdue.</p>
+    <p>Thank you for your patronage of the Belk Library. You've successfully checked out the book,. Please note that this book is due back on . A friendly email reminder will be sent to you if your book becomes overdue.</p>
     <p><a href="index.jsp" title="Return"><strong>Return to front page</strong></a></p>
   </div>
 </div>
