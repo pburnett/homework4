@@ -11,7 +11,7 @@
 
 <div id="redBorder">
   <div id="mainContent">
-    <h1>Currently checkout out books</h1>
+    <h1>Currently checked out books</h1>
 
     <table>
 
@@ -28,6 +28,9 @@
           <td>${user.firstName} ${user.lastName}</td>
           <td>${user.email}</td>
           <td>${user.bookTitle}</td>
+          <td>Due Date to fix</td>
+          <td>Overdue to fix</td>
+          <td><input type="submit" value="Check in" id="checkin" /></td>
         </tr>
       </c:forEach>
 

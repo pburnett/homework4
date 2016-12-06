@@ -1,5 +1,4 @@
 package elon.edu.data;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ public class UserDB {
 
     
     public static ArrayList<User> selectUsers() {
-        // add code that returns an ArrayList<User> object of all users in the User table
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
