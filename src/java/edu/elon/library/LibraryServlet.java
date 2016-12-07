@@ -58,7 +58,11 @@ public class LibraryServlet extends HttpServlet {
       request.setAttribute("user", user);
       url = "/checkoutConfirm.jsp";
     } else if (action.equals("checkin")) {
-        
+            String email = request.getParameter("email");
+            User user = UserDB.selectUser(email);
+            UserDB.delete(user);
+            ArrayList<User> users = UserDB.selectUsers();
+            request.setAttribute("users", users);
         url = "/library?action=manage";
     }
 
