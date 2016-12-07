@@ -70,6 +70,8 @@ public class LibraryServlet extends HttpServlet {
             ArrayList<User> users = UserDB.selectUsers();
             request.setAttribute("users", users);
             url = "/library?action=manage";
+        } else if (action.equals("goToCheckout")) {
+          url = "/checkout.jsp";
         }
 
         getServletContext()

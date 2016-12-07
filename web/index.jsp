@@ -12,7 +12,7 @@
 <div id="redBorder">
   <div id="mainContent">
     <input type="hidden" name="action" value="checkout" />
-    <p><a href="checkout.jsp" title="Checkout"><strong>Check out a book</strong></a></p>
+    <p><a href="library?action=goToCheckout" title="Checkout"><strong>Check out a book</strong></a></p>
     <p><a href="library?action=manage" title="Manage" ><strong>Manage checked out books</strong></a></p>
   </div>
 </div>
