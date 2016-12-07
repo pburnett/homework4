@@ -16,19 +16,19 @@
     <input type="hidden" name="action" value="checkout" />
     <p>
       <label class="left">First Name:</label>
-      <input name="firstName" type="text" title="First Name" value="${user.firstName}" required/>
+      <input id="firstNameID" name="firstName" type="text" title="First Name" value="${user.firstName}" required/>
     </p>
     <p>
       <label class="left">Last Name:</label>
-      <input name="lastName" type="text" title="Last Name" value="${user.lastName}" required/>
+      <input id="lastNameId" name="lastName" type="text" title="Last Name" value="${user.lastName}" required/>
     </p>
     <p>
       <label class="left">Email Address:</label>
-      <input name="email" type="email" title="Email Address" value="${user.email}" required/>
+      <input id="emailAddressID" name="email" type="email" title="Email Address" value="${user.email}" required/>
     </p>
     <p>
       <label class="left">Book Title</label>
-      <input name="bookTitle" type="text" title="Book Title" value="${user.bookTitle}" required/>
+      <input id="bookTitleID" name="bookTitle" type="text" title="Book Title" value="${user.bookTitle}" required/>
     </p>
     <p><input type="submit" value="Checkout" id="checkout" /></p>
   </form>
