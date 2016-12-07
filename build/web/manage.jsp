@@ -40,7 +40,7 @@
 
     </table>
 
-    <p><a href="index.jsp" title="Return to front page"><strong>Return to front page</strong></a></p>
+    <p><a href="library?action=null" title="Return to front page"><strong>Return to front page</strong></a></p>
   </div>
 </div>
 

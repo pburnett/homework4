@@ -18,6 +18,16 @@ img {
   text-align: center;
 }
 
+table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+
 footer {
   border-bottom-style: none;
   border-left-style: none;
