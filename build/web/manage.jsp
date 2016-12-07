@@ -30,10 +30,11 @@
           <td>${user.email}</td>
           <td>${user.bookTitle}</td>
           <td>${user.dueDate}</td>
-          <td>Overdue to fix</td>
-          <form action="library" method="post">
-          <input type="hidden" name="action" value="checkin" />
-          <td><input type="submit" name="action" value="Check in" id="checkin" /></td>
+          <td><c:if test="${user.isDue == true}">Overdue</c:if></td>      
+          <td><form action="library?action=checkin&amp;email=${user.email}&amp;bookTitle=${user.bookTitle}" method="post">
+          <input type="submit" name="action" value="Check in" id="checkin" />
+          </form></td>
+
         </tr>
       </c:forEach>
 

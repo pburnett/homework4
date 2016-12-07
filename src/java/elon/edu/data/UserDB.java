@@ -14,8 +14,8 @@ public class UserDB {
         
         
         String query
-                = "INSERT INTO User (Email, FirstName, LastName, BookTitle, DueDate) "
-                + "VALUES (?, ?, ?, ?, ?)";
+                = "INSERT INTO User (Email, FirstName, LastName, BookTitle, DueDate, IsDue) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             System.out.println(user.getEmail() + " " + user.getFirstName() + " " + user.getLastName() + " " + user.getBookTitle());
             ps = connection.prepareStatement(query);
@@ -24,6 +24,7 @@ public class UserDB {
             ps.setString(3, user.getLastName());
             ps.setString(4, user.getBookTitle());
             ps.setString(5, user.getDueDate());
+            ps.setBoolean(6, user.getIsDue());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -40,8 +41,8 @@ public class UserDB {
         PreparedStatement ps = null;
 
         String query = "DELETE FROM User "
-                + "WHERE Email = ?"
-                + "WHERE BookTitle = ?";
+                + "WHERE Email = ? AND "
+                + "BookTitle = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getEmail());
@@ -56,17 +57,18 @@ public class UserDB {
         }
     }
     
-    public static User selectUser(String email) {
+    public static User selectUser(String email, String book) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT * FROM fristapp.User "
-                + "WHERE Email = ?";
+        String query = "SELECT * FROM User "
+                + "WHERE Email = ? AND BookTitle = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
+            ps.setString(2, book);
             rs = ps.executeQuery();
             User user = null;
             if (rs.next()) {

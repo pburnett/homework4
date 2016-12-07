@@ -5,8 +5,6 @@
  */
 package edu.elon.user;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.io.Serializable;
 
 /**
@@ -20,6 +18,7 @@ public class User implements Serializable {
     private String lastName;
     private String bookTitle;
     private String dueDate;
+    private Boolean isDue;
 
     public User() {
         email = "";
@@ -27,6 +26,7 @@ public class User implements Serializable {
         lastName = "";
         bookTitle = "";
         dueDate = "";
+        isDue = false;
     }
 
     public User(String firstName, String lastName, String email, String bookTitle, String dueDate) {
@@ -35,6 +35,7 @@ public class User implements Serializable {
         this.email = email;
         this.bookTitle = bookTitle;
         this.dueDate = dueDate;
+        isDue = false;
     }
 
     public String getEmail() {
@@ -75,5 +76,13 @@ public class User implements Serializable {
     
     public void setDueDate(String dueDate){
         this.dueDate = dueDate;
+    }
+    
+    public boolean getIsDue(){
+        return isDue;
+    }
+    
+    public void setIsDue(boolean isDue){
+        this.isDue = isDue;
     }
 }

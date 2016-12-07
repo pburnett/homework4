@@ -1,6 +1,6 @@
 </main>
 <footer>
-  <p>© ${currentYear}, Tanner McIntyre & Dylan Burnett</p>
+  <p>© ${requestScope.currentYear}, Tanner McIntyre & Dylan Burnett</p>
 </footer>
 </body>
 </html>

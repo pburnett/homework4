@@ -7,10 +7,11 @@ CREATE TABLE User (
   Email VARCHAR(50) NOT NULL,
   FirstName VARCHAR(50) NOT NULL,
   LastName VARCHAR(50) NOT NULL,
-  BookTitle VARCHAR(50) NOT NULL
+  BookTitle VARCHAR(50) NOT NULL,
+  DueDate VARCHAR(50) NOT NULL
 );
 
 INSERT INTO User 
-  (Email, FirstName, LastName, BookTitle)
+  (Email, FirstName, LastName, BookTitle, DueDate)
 VALUES 
-  ('pburnett@elon.edu', 'Dylan', 'Burnett', 'Into The Wild');
+  ('pburnett@elon.edu', 'Dylan', 'Burnett', 'Into The Wild', CURDATE());

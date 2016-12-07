@@ -14,7 +14,6 @@
     <input type="hidden" name="action" value="checkout" />
     <p><a href="checkout.jsp" title="Checkout"><strong>Check out a book</strong></a></p>
     <p><a href="library?action=manage" title="Manage" ><strong>Manage checked out books</strong></a></p>
-    <p>${user.firstName}</p>
   </div>
 </div>
 
