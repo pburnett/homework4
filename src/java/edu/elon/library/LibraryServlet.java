@@ -10,6 +10,7 @@ import elon.edu.data.UserDB;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.sql.Date;
 import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,10 +49,17 @@ public class LibraryServlet extends HttpServlet {
       String lastName = request.getParameter("lastName");
       String email = request.getParameter("email");
       String bookTitle = request.getParameter("bookTitle");
-
-      User user = new User(firstName, lastName, email, bookTitle);
+      Date date = new Date(System.currentTimeMillis() + 1209600000);
+      String dueDateUnformatted = date.toString();
+      String dueDate = DateBuilder(dueDateUnformatted);
+      System.out.println(bookTitle);
+      User user = new User(firstName, lastName, email, bookTitle, dueDate);
       UserDB.insert(user);
+      request.setAttribute("user", user);
       url = "/checkoutConfirm.jsp";
+    } else if (action.equals("checkin")) {
+        
+        url = "/library?action=manage";
     }
 
     getServletContext()
@@ -64,6 +72,14 @@ public class LibraryServlet extends HttpServlet {
           HttpServletResponse response)
           throws ServletException, IOException {
     doPost(request, response);
+  }
+  
+  public String DateBuilder(String dateStr){
+    String year = dateStr.substring(0, 4);
+    String month = dateStr.substring(5, 7);
+    String day = dateStr.substring(8);
+    return month + "-" + day + "-" + year;
+    //int current
   }
 
 }

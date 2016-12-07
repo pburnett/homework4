@@ -28,7 +28,7 @@
     </p>
     <p>
       <label class="left">Book Title</label>
-      <input name="book" type="text" title="Book Title" value="${user.bookTitle}" required/>
+      <input name="bookTitle" type="text" title="Book Title" value="${user.bookTitle}" required/>
     </p>
     <p><input type="submit" value="Checkout" id="checkout" /></p>
   </form>

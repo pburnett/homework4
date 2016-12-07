@@ -18,19 +18,22 @@
       <tr>
         <th>Patron Name</th>
         <th>Email Address</th>
-        <th >Book Title</th>
+        <th>Book Title</th>
         <th>Due Date</th>
         <th>Overdue</th>
+        <th></th>
       </tr>
-
+      
       <c:forEach var="user" items="${users}">
         <tr>
-          <td><c:out value="${user.firstName}"/> ${user.lastName}</td>
+          <td>${user.firstName} ${user.lastName}</td>
           <td>${user.email}</td>
           <td>${user.bookTitle}</td>
-          <td>Due Date to fix</td>
+          <td>${user.dueDate}</td>
           <td>Overdue to fix</td>
-          <td><input type="submit" value="Check in" id="checkin" /></td>
+          <form action="library" method="post">
+          <input type="hidden" name="action" value="checkin" />
+          <td><input type="submit" name="action" value="Check in" id="checkin" /></td>
         </tr>
       </c:forEach>
 

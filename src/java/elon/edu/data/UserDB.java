@@ -11,15 +11,19 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
+        
+        
         String query
-                = "INSERT INTO User (Email, FirstName, LastName, BookTitle) "
-                + "VALUES (?, ?, ?, ?)";
+                = "INSERT INTO User (Email, FirstName, LastName, BookTitle, DueDate) "
+                + "VALUES (?, ?, ?, ?, ?)";
         try {
+            System.out.println(user.getEmail() + " " + user.getFirstName() + " " + user.getLastName() + " " + user.getBookTitle());
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getFirstName());
             ps.setString(3, user.getLastName());
             ps.setString(4, user.getBookTitle());
+            ps.setString(5, user.getDueDate());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -60,6 +64,7 @@ public class UserDB {
         ArrayList<User> users = new ArrayList();
         
         String query = "SELECT * FROM User ";
+        
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -69,7 +74,8 @@ public class UserDB {
                 user.setFirstName(rs.getString("FirstName"));
                 user.setLastName(rs.getString("LastName"));
                 user.setEmail(rs.getString("Email"));
-                user.setEmail(rs.getString("BookTitle"));
+                user.setBookTitle(rs.getString("BookTitle"));
+                user.setDueDate(rs.getString("DueDate"));
                 users.add(user);
             }
             return users;
