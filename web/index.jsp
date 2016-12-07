@@ -1,7 +1,8 @@
 <%-- 
     Document   : index
     Created on : Dec 4, 2016, 5:11:37 PM
-    Author     : Dylan
+    Author     : © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
+    http://firstapp-pburnett.rhcloud.com/homework4/
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

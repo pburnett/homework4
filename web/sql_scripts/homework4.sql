@@ -1,3 +1,5 @@
+/* © Dylan Burnett and Tanner McIntyre 2016. All rights reserved. */
+
 CREATE DATABASE IF NOT EXISTS firstapp;
 USE firstapp;
 

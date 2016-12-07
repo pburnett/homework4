@@ -5,7 +5,7 @@ and open the template in the editor.
 */
 /* 
     Created on : Dec 4, 2016, 5:18:47 PM
-    Author     : Dylan
+    Author     : © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
 */
 
 img {
@@ -19,8 +19,8 @@ img {
 }
 
 table {
-    table-layout: auto;
     border-collapse: collapse;
+    table-layout: auto;
     width: 100%;
 }
 
@@ -32,8 +32,8 @@ footer {
   border-bottom-style: none;
   border-left-style: none;
   border-right-style: none;
-  border-top-style: solid;
   border-top-color: darkblue;
+  border-top-style: solid;
 }
 
 footer p {
@@ -55,8 +55,8 @@ footer p {
 }
 
 #bookTitleID {
-    width: 25%;
     margin-left: 61px;
+    width: 25%;
 }
 
 #firstNameID {

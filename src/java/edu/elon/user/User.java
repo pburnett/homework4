@@ -1,11 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
  */
 package edu.elon.user;
 
 import java.io.Serializable;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -84,5 +85,13 @@ public class User implements Serializable {
     
     public void setIsDue(boolean isDue){
         this.isDue = isDue;
+    }
+    
+    public boolean LateChecker(){
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf.applyLocalizedPattern("MM-dd-yyyy");
+        Date lateDate = sdf.parse(this.dueDate, new ParsePosition(0));
+        Date date = new Date(System.currentTimeMillis());
+        return date.after(lateDate);
     }
 }

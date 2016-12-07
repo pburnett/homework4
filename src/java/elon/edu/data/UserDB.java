@@ -1,3 +1,7 @@
+/*
+ * © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
+ */
+
 package elon.edu.data;
 import java.sql.*;
 import java.util.ArrayList;

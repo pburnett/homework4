@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
+    Document   : manage
     Created on : Dec 4, 2016, 5:11:37 PM
-    Author     : Dylan
+    Author     : © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,6 +30,8 @@
           <td>${user.email}</td>
           <td>${user.bookTitle}</td>
           <td>${user.dueDate}</td>
+          <jsp:useBean id="now" class="java.util.Date" />
+          <fmt:formatDate var="now" pattern="MM dd yyyy" value="${now}" />
           <td><c:if test="${user.isDue == true}">Overdue</c:if></td>      
           <td><form action="library?action=checkin&amp;email=${user.email}&amp;bookTitle=${user.bookTitle}" method="post">
           <input type="submit" name="action" value="Check in" id="checkin" />

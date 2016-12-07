@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * © Dylan Burnett and Tanner McIntyre 2016. All rights reserved.
  */
 package edu.elon.library;
 
@@ -10,13 +8,13 @@ import elon.edu.data.UserDB;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,7 +31,6 @@ public class LibraryServlet extends HttpServlet {
         int currentYear = currentDate.get(Calendar.YEAR);
         request.setAttribute("currentYear", currentYear);
 
-        HttpSession session = request.getSession();
         String url = "/index.jsp";
         String action = request.getParameter("action");
 
@@ -42,22 +39,21 @@ public class LibraryServlet extends HttpServlet {
             url = "/index.jsp";
         } else if (action.equals("manage")) {
             ArrayList<User> users = UserDB.selectUsers();
-            for(User user : users){
-                String rawDate = user.getDueDate();
-                user.setIsDue(LateChecker(rawDate));
+            for (User user : users) {
+                user.setIsDue(user.LateChecker());
             }
             request.setAttribute("users", users);
             url = "/manage.jsp";
-            System.out.println("hello");
         } else if (action.equals("checkout")) {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String email = request.getParameter("email");
             String bookTitle = request.getParameter("bookTitle");
             Date date = new Date(System.currentTimeMillis() + 1209600000);
-            String dueDateUnformatted = date.toString();
-            String dueDate = DateBuilder(dueDateUnformatted);
-            System.out.println(bookTitle);
+            SimpleDateFormat sdf = new SimpleDateFormat();
+            sdf.applyLocalizedPattern("MM-dd-yyyy");
+            String dueDate = sdf.format(date);
+            System.out.println(dueDate);
             User user = new User(firstName, lastName, email, bookTitle, dueDate);
             UserDB.insert(user);
             request.setAttribute("user", user);
@@ -71,7 +67,7 @@ public class LibraryServlet extends HttpServlet {
             request.setAttribute("users", users);
             url = "/library?action=manage";
         } else if (action.equals("goToCheckout")) {
-          url = "/checkout.jsp";
+            url = "/checkout.jsp";
         }
 
         getServletContext()
@@ -84,30 +80,6 @@ public class LibraryServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
-    }
-
-    public String DateBuilder(String dateStr) {
-        String year = dateStr.substring(0, 4);
-        String month = dateStr.substring(5, 7);
-        String day = dateStr.substring(8);
-        return month + "-" + day + "-" + year;
-        //int current
-    }
-    
-    public boolean LateChecker(String rawDate){
-        String month = rawDate.substring(0,2);
-        int monthNum = Integer.parseInt(month);
-        String day = rawDate.substring(3,5);
-        int dayNum = Integer.parseInt(day);
-        String year = rawDate.substring(6);
-        int yearNum = Integer.parseInt(year);
-        Date lateDate = new Date(yearNum, monthNum, dayNum);
-        Date date = new Date(System.currentTimeMillis());
-        if(date.after(lateDate)){
-            return true;
-        } else{
-            return false;
-        }
     }
 
 }
